@@ -62,4 +62,5 @@ $mmda->segments('EDSA'); // parameter should be a valid highway (see getting maj
 
 ## Special thanks to:
 * [Rem Cruz](https://github.com/remerico/) and his [Pebble MMDA App](https://github.com/remerico/pebble-mmda)
-
+* [MMDA for iOS](https://itunes.apple.com/ph/app/mmda-for-ios/id464656389?mt=8) by Giro AppSolutions
+* [MMDA for Android™](https://play.google.com/store/apps/details?id=edu.up.ittc.mmda&hl=en) by UP ITDC
