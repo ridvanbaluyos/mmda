@@ -13,9 +13,16 @@
     "require": {
         "php": ">=5.3.3"
     },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
     "autoload": {
         "psr-4": {
             "Ridvanbaluyos\\": "src/Ridvanbaluyos"
-        }
+        },
+        "psr-0": {"": "src"}
+    },
+    "config": {
+        "bin-dir": "bin"
     }
 }
