@@ -1,27 +1,18 @@
-ridvanbaluyos/mmda
+RidvanBaluyos/MMDA
 =======
 An MMDA Traffic Navigator package for PHP
 > Traffic Data downloaded from: [MMDA-TV5 Metro Manila Traffic Navigator](http://mmdatraffic.interaksyon.com/)
-<br/><br/>
+
 
 [![Latest Stable Version](https://poser.pugx.org/ridvanbaluyos/mmda/v/stable.svg)](https://packagist.org/packages/ridvanbaluyos/mmda) [![Total Downloads](https://poser.pugx.org/ridvanbaluyos/mmda/downloads.svg)](https://packagist.org/packages/ridvanbaluyos/mmda) [![Latest Unstable Version](https://poser.pugx.org/ridvanbaluyos/mmda/v/unstable.svg)](https://packagist.org/packages/ridvanbaluyos/mmda) [![License](https://poser.pugx.org/ridvanbaluyos/mmda/license.svg)](https://packagist.org/packages/ridvanbaluyos/mmda)
 
 ## Table of contents ##
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Traffic Data](#getting-traffic-data)
-    - [Highways](#getting-major-highways)
-    - [Segments](#getting-highway-segments)
 - [Credits](#special-thanks-to)
 
 ### Installation ##
-Open your `composer.json` file and add the following to the `require` key:
 
-    "ridvanbaluyos/chikka": "v0.1"
-
----
-
-After adding the key, run composer update from the command line to install the package
 
 ```bash
 composer install
@@ -34,39 +25,33 @@ composer update
 ```
 
 ### Usage ##
-```php
+```PHP
 <?php
 // require the autoloader created upon composer install/update
 require_once __DIR__ . '/vendor/autoload.php';
 
 // namespace
-use Ridvanbaluyos\Mmda\MMDA as MMDA;
+use RidvanBaluyos\MMDA;
 
-// instantiate the MMDA object
-$mmda = new MMDA();
+// to get highway/segment traffic
+$highway = new MMDA\Highway(new MMDA\Traffic);
+$highway->get_traffic('C5', 'AURORA_BOULEVARD');
+
+// to get list of highways
+$highway->get_list();
+
+// to get all traffic data
+$traffic = new MMDA\Traffic;
+$traffic->load_traffic_data();
 
 ?>
 ```
 
-#### Getting Traffic Data
-```php
-$mmda->traffic('EDSA');
-
-or
-
-$mmda->traffic('EDSA', 'AURORA_BOULEVARD');
+### Running PHPSpec ##
+```bash
+./bin/phpspec --ansi run
 ```
 
-#### Getting Major Highways
-```php
-$mmda->get_highways();
-```
-
-#### Getting Highway Segments
-```php
-// parameter should be a valid highway (see getting major highways)
-$mmda->get_highway_segments('EDSA');
-```
 
 ## Special thanks to:
 * [Rem Cruz](https://github.com/remerico/) and his [Pebble MMDA App](https://github.com/remerico/pebble-mmda)
