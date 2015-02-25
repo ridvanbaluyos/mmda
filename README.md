@@ -2,7 +2,9 @@ ridvanbaluyos/mmda
 =======
 An MMDA Traffic Navigator package for PHP
 > Traffic Data downloaded from: [MMDA-TV5 Metro Manila Traffic Navigator](http://mmdatraffic.interaksyon.com/)
-
+<br/>
+[![Latest Stable Version](https://poser.pugx.org/ridvanbaluyos/mmda/v/stable.svg)](https://packagist.org/packages/ridvanbaluyos/mmda) [![Total Downloads](https://poser.pugx.org/ridvanbaluyos/mmda/downloads.svg)](https://packagist.org/packages/ridvanbaluyos/mmda) [![Latest Unstable Version](https://poser.pugx.org/ridvanbaluyos/mmda/v/unstable.svg)](https://packagist.org/packages/ridvanbaluyos/mmda) [![License](https://poser.pugx.org/ridvanbaluyos/mmda/license.svg)](https://packagist.org/packages/ridvanbaluyos/mmda)
+<br/>
 ## Table of contents ##
 - [Installation](#installation)
 - [Usage](#usage)
