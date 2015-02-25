@@ -1,0 +1,21 @@
+{
+    "name": "ridvanbaluyos/mmda",
+    "type": "library",
+    "description": "A PHP Library built for the MMDA Traffic Update.",
+    "keywords": ["mmda", "traffic"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ridvan Baluyos",
+            "email": "ridvan@baluyos.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ridvanbaluyos\\": "src/Ridvanbaluyos"
+        }
+    }
+}
