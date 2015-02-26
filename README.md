@@ -17,7 +17,7 @@ An MMDA Traffic Navigator package for PHP
 ### Installation ##
 Open your `composer.json` file and add the following to the `require` key:
 
-    "ridvanbaluyos/chikka": "v0.1"
+    "ridvanbaluyos/mmda": "v0.1"
 
 ---
 
