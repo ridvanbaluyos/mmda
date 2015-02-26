@@ -2,7 +2,7 @@
 
 class MMDA
 {
-    CONST FEED_URL = 'http://mmdatraffic.interaksyon.com/livefeed/';
+    const FEED_URL = 'http://mmdatraffic.interaksyon.com/livefeed/';
 
     private $trafficData;
     private $channel;
@@ -12,28 +12,27 @@ class MMDA
         $this->trafficData = $this->getTrafficData();
     }
 
-    public function traffic($highway, $segment = NULL)
+    public function traffic()
     {
-        $traffic = $this->trafficData[$highway];
-
-        if ($segment)
-            $traffic = $traffic[$segment];
+        $traffic = $this->trafficData;
 
         return $traffic;
     }
 
-    public function get_highways()
+    public function highways()
     {
-        if ($this->trafficData)
+        if ($this->trafficData) {
             return array_keys($this->trafficData);
+        }
 
         return null;
     }
 
-    public function get_highway_segments($highway = NULL)
+    public function segments($highway = NULL)
     {
-        if ($highway && isset($this->trafficData[$highway]))
+        if ($highway && isset($this->trafficData[$highway])) {
             return array_keys($this->trafficData[$highway]);
+        }
 
         return null;
     }

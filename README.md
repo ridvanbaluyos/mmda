@@ -50,22 +50,19 @@ $mmda = new MMDA();
 
 #### Getting Traffic Data
 ```php
-$mmda->traffic('EDSA');
+$mmda->traffic();
 
-or
-
-$mmda->traffic('EDSA', 'AURORA_BOULEVARD');
 ```
 
 #### Getting Major Highways
 ```php
-$mmda->get_highways();
+$mmda->highways();
 ```
 
 #### Getting Highway Segments
 ```php
 // parameter should be a valid highway (see getting major highways)
-$mmda->get_highway_segments('EDSA');
+$mmda->segments('EDSA');
 ```
 
 ## Special thanks to:
