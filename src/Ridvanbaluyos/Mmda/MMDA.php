@@ -59,8 +59,8 @@ class MMDA
      */
     public function segments($highway = NULL)
     {
-        if ($highway && isset($this->trafficData[$highway])) {
-            return array_keys($this->trafficData[$highway]);
+        if ($highway && isset($this->trafficData[$highway]['segments'])) {
+            return array_keys($this->trafficData[$highway]['segments']);
         }
 
         return null;
