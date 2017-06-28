@@ -136,7 +136,7 @@ class MMDA
                     'name' => $segment,
                     'label' => $this->convertToTitle($segment),
                     'status' => $this->convertToStatus($status),
-                    'last_updated' => $status['pubDate'],
+
                 ];
                 $traffic[$highway]['segments'] = $dataSegments;
             }
@@ -165,10 +165,12 @@ class MMDA
             'NB' => [
                 'name' => $data['NB'],
                 'label' => $statusMatrix[$data['NB']] . ' Traffic',
+                'last_updated' => $data['pubDate']
             ],
             'SB' => [
                 'name' => $data['SB'],
                 'label' => $statusMatrix[$data['SB']] . ' Traffic',
+                'last_updated' => $data['pubDate']
             ]
         ];
 
