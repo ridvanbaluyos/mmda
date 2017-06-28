@@ -81,7 +81,7 @@ class MMDA
 
         $xml = simplexml_load_string($response);
 
-        return $this->parseTrafficData($xml);
+        return $this->sanitizeTrafficData($this->parseTrafficData($xml));
     }
 
     /**
@@ -92,7 +92,7 @@ class MMDA
      */
     final private function parseTrafficData($xml)
     {
-        $traffic = array();
+        $traffic = [];
 
         foreach ($xml->channel->item as $item) {
             $item = get_object_vars($item);
@@ -100,15 +100,100 @@ class MMDA
             $description = $item['description'];
             $pubDate = $item['pubDate'];
 
-            list($highway, $segment, $direction) = explode('-', $title); //highway-segment-direction
+            $highway = explode('-', $title, 2)[0];
+            $segment = substr(explode('-', $title, 2)[1], 0, -3);
+            $direction = substr(explode('-', $title, 2)[1], -2);
 
-            if (empty($traffic[$highway])) $traffic[$highway] = array();
-            if (empty($traffic[$highway][$segment])) $traffic[$highway][$segment] = array();
+            if (empty($traffic[$highway])) $traffic[$highway] = [];
+            if (empty($traffic[$highway][$segment])) $traffic[$highway][$segment] = [];
 
             $traffic[$highway][$segment][$direction] = $description;
             $traffic[$highway][$segment]['pubDate'] = $pubDate;
         }
 
         return $traffic;
+    }
+
+    /**
+     * This function sanitizes the traffic data and organizes them into an envelope
+     *
+     * @param array $trafficData
+     * @return array
+     */
+    final private function sanitizeTrafficData(Array $trafficData)
+    {
+        $traffic = [];
+        foreach ($trafficData as $highway=>$segments) {
+            $traffic[$highway] = [
+                'name' => $highway,
+                'label' => $this->convertToTitle($highway),
+            ];
+            $traffic[$highway]['segments'] = [];
+            $dataSegments = [];
+
+            foreach ($segments as $segment=>$status) {
+                $dataSegments[$segment] = [
+                    'name' => $segment,
+                    'label' => $this->convertToTitle($segment),
+                    'status' => $this->convertToStatus($status),
+                    'last_updated' => $status['pubDate'],
+                ];
+                $traffic[$highway]['segments'] = $dataSegments;
+            }
+        }
+
+        return $traffic;
+    }
+
+    /**
+     * This function converts traffic data status to readable format.
+     *
+     * @param array $data
+     * @return array
+     */
+    final private function convertToStatus(Array $data)
+    {
+        $statusMatrix = [
+            'L' => 'Light',
+            'ML' => 'Light to Moderate',
+            'M' => 'Moderate',
+            'MH' => 'Moderate to Heavy',
+            'H' => 'Heavy'
+        ];
+
+        $status = [
+            'NB' => [
+                'name' => $data['NB'],
+                'label' => $statusMatrix[$data['NB']] . ' Traffic',
+            ],
+            'SB' => [
+                'name' => $data['SB'],
+                'label' => $statusMatrix[$data['SB']] . ' Traffic',
+            ]
+        ];
+
+        return $status;
+    }
+
+    /**
+     * This function sanitizes certain abbreviations into readable format.
+     *
+     * @param $string
+     * @return string
+     */
+    final private function convertToTitle($string)
+    {
+        $string2 = [];
+        $string = str_replace(['_', 'AVE.', 'BLVD.'], [' ', 'AVENUE', 'BOULEVARD'], $string);
+        $words = explode(' ', $string);
+
+        foreach ($words as $word) {
+            if (!in_array($word, ['EDSA', 'U.N.'])) {
+                $word = ucwords(mb_strtolower($word));
+            }
+            array_push($string2, $word);
+        }
+
+        return implode(' ', $string2);
     }
 }
