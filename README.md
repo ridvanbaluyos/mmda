@@ -5,7 +5,7 @@ An MMDA Traffic Navigator package for PHP
 <br/><br/>
 
 [![Actively Maintained](https://maintained.tech/badge.svg)](https://maintained.tech/)
-[![Latest Stable Version](https://poser.pugx.org/ridvanbaluyos/mmda/v/stable)](https://packagist.org/packages/ridvanbaluyos/mmda) [![Total Downloads](https://poser.pugx.org/ridvanbaluyos/mmda/downloads)](https://packagist.org/packages/ridvanbaluyos/mmda) [![Latest Unstable Version](https://poser.pugx.org/ridvanbaluyos/mmda/v/unstable)](https://packagist.org/packages/ridvanbaluyos/mmda) [![License](https://poser.pugx.org/ridvanbaluyos/mmda/license)](https://packagist.org/packages/ridvanbaluyos/mmda)
+[![Latest Stable Version](https://poser.pugx.org/ridvanbaluyos/mmda/v/stable)](https://packagist.org/packages/ridvanbaluyos/mmda) [![Total Downloads](https://poser.pugx.org/ridvanbaluyos/mmda/downloads)](https://packagist.org/packages/ridvanbaluyos/mmda) [![Latest Unstable Version](https://poser.pugx.org/ridvanbaluyos/mmda/v/unstable)](https://packagist.org/packages/ridvanbaluyos/mmda) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0ce7e7c86bf0405c9497dafc28f14a96)](https://www.codacy.com/app/ridvanbaluyos/mmda?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ridvanbaluyos/mmda&amp;utm_campaign=Badge_Grade) [![License](https://poser.pugx.org/ridvanbaluyos/mmda/license)](https://packagist.org/packages/ridvanbaluyos/mmda)
 
 ## Table of contents ##
 - [Installation](#installation)
