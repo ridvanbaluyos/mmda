@@ -13,7 +13,7 @@ namespace Ridvanbaluyos\Mmda;
  */
 class MMDA
 {
-    const FEED_URL = 'http://mmdatraffic.interaksyon.com/livefeed/';
+    const FEED_URL = 'http://mmdatraffic.interaksyon.com';
 
     private $trafficData;
     private $channel;
@@ -23,7 +23,13 @@ class MMDA
      */
     public function __construct()
     {
-        $this->trafficData = $this->getTrafficData();
+        $metroManilaFeedUrl = self::FEED_URL . '/livefeed/';
+        $nlexFeedUrl = self::FEED_URL . '/nlex/livefeed/';
+        
+        $metroManilaTrafficData = $this->getTrafficData($metroManilaFeedUrl);
+        $nlexTrafficData = $this->getTrafficData($nlexFeedUrl);
+        
+        $this->trafficData = array_merge($metroManilaTrafficData, $nlexTrafficData);
     }
 
     /**
@@ -71,10 +77,10 @@ class MMDA
      *
      * @return array
      */
-    final private function getTrafficData()
+    final private function getTrafficData($feedUrl)
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, self::FEED_URL);
+        curl_setopt($ch, CURLOPT_URL, $feedUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
         curl_close($ch);
