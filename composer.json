@@ -1,6 +1,6 @@
 {
     "name": "ridvanbaluyos/mmda",
-    "version": "v1.1",
+    "version": "v1.1.1",
     "type": "library",
     "description": "A PHP Library built for the MMDA Traffic Update.",
     "keywords": ["mmda", "traffic"],
@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=7.0"
     },
     "autoload": {
         "psr-4": {

@@ -160,22 +160,26 @@ class MMDA
     final private function convertToStatus(Array $data)
     {
         $statusMatrix = [
-            'L' => 'Light',
+            '-'  => 'No data',
+            'L'  => 'Light',
             'ML' => 'Light to Moderate',
-            'M' => 'Moderate',
+            'M'  => 'Moderate',
             'MH' => 'Moderate to Heavy',
-            'H' => 'Heavy'
+            'H'  => 'Heavy'
         ];
+
+        $northBound = ($data['SB']) ?? '-';
+        $southBound = ($data['SB']) ?? '-';
 
         $status = [
             'NB' => [
-                'name' => $data['NB'],
-                'label' => $statusMatrix[$data['NB']] . ' Traffic',
+                'name' => $northBound,
+                'label' => $statusMatrix[$northBound] . ' Traffic',
                 'last_updated' => $data['pubDate']
             ],
             'SB' => [
-                'name' => $data['SB'],
-                'label' => $statusMatrix[$data['SB']] . ' Traffic',
+                'name' => $southBound,
+                'label' => $statusMatrix[$southBound] . ' Traffic',
                 'last_updated' => $data['pubDate']
             ]
         ];
